@@ -1,0 +1,72 @@
+==============================
+FNMap Setup Instructions (Steam Deck Manual Run)
+==============================
+
+These steps assume you already have the `bootstrap_fnmap.sh` script downloaded locally
+(from GitHub or USB) and placed in your Steam Deck's home directory (or anywhere convenient).
+
+──────────────────────────────
+STEP 1 — Make Script Executable
+──────────────────────────────
+Make sure SteamOS allows local writes before doing anything else:
+
+    sudo steamos-readonly disable
+
+Then mark the script as executable so it can run:
+
+    chmod +x ~/bootstrap_fnmap.sh
+
+──────────────────────────────
+STEP 2 — Run the Script
+──────────────────────────────
+Now, run the script to perform the full setup and build process:
+
+    ./bootstrap_fnmap.sh
+
+or, if you want the system set back to read-only mode when it’s done:
+
+    REENABLE_READONLY=1 ./bootstrap_fnmap.sh
+
+──────────────────────────────
+STEP 3 — What the Script Does
+──────────────────────────────
+1. Checks system package manager availability and disables read-only FS.
+2. Installs all required dependencies for Flutter and FNMap (via pacman).
+3. Installs Flutter (prefers system package, falls back to GitHub tarball).
+4. Clones FNMap (defaults to https://github.com/grmcrkrs/fnmap.git).
+5. Fixes dependency versions (like font_awesome_flutter 10.7.0).
+6. Runs `flutter pub get` and `flutter build linux --release`.
+7. Fixes library paths and creates a run wrapper in `~/bin/fnmap-run.sh`.
+8. Adds network/socket access to the binary (no need for sudo each run).
+9. Creates a proper desktop launcher under your Applications menu.
+10. Optionally re-enables SteamOS read-only filesystem.
+
+──────────────────────────────
+STEP 4 — Launching FNMap
+──────────────────────────────
+After the script completes successfully, you can launch FNMap by either:
+
+    ~/bin/fnmap-run.sh
+
+Or from the Steam Deck’s Application Menu under:
+**Internet → FNMap**
+
+──────────────────────────────
+STEP 5 — Notes
+──────────────────────────────
+- If you rebuild Flutter or update SteamOS, you may need to re-run this script.
+- The script installs to ~/fnmap by default; set FNMAP_DIR to override.
+- The desktop launcher references the wrapper script to ensure it runs correctly.
+- Network capabilities (`setcap cap_net_raw,cap_net_admin+ep`) are applied automatically.
+- You can safely re-run this script anytime — it checks and skips existing steps.
+
+──────────────────────────────
+OPTIONAL CLEANUP COMMANDS
+──────────────────────────────
+To re-enable read-only filesystem manually later:
+
+    sudo steamos-readonly enable
+
+To remove FNMap entirely:
+
+    rm -rf ~/fnmap ~/bin/fnmap-run.sh ~/.local/share/applications/fnmap.desktop
