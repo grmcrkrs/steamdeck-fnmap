@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 # ------------------------------------------------------------------
+#
+# CURRENTLY UNTESTED, TESTING 10.25.25 -GP
+#
+#
 # FNMap Steam Deck bootstrapper
 # Installs deps, configures Flutter, builds FNMap, sets capabilities,
 # and creates a desktop launcher.
