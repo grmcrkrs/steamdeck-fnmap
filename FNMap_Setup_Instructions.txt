@@ -60,6 +60,28 @@ STEP 5 — Notes
 - Network capabilities (`setcap cap_net_raw,cap_net_admin+ep`) are applied automatically.
 - You can safely re-run this script anytime — it checks and skips existing steps.
 
+📎 Optional: Install FNMAP launcher in the Application Menu
+
+After FNMAP has been successfully built and tested, you can install a launcher entry so it appears under Internet → FNMap (root) in your system menu.
+
+Run these commands once:
+
+cd ~/steamdeck-fnmap
+install -Dm644 desktop/com.krioltech.fnmap.desktop \
+  ~/.local/share/applications/com.krioltech.fnmap.desktop
+
+update-desktop-database ~/.local/share/applications || true
+
+
+What this does:
+
+Copies the .desktop launcher from the repo into your personal application directory.
+
+Updates the menu so the new FNMAP entry appears immediately.
+
+Result:
+You’ll see “FNMap (root)” in your Applications menu. When clicked, it will prompt for your password and start FNMAP with socket access.
+
 ──────────────────────────────
 OPTIONAL CLEANUP COMMANDS
 ──────────────────────────────
