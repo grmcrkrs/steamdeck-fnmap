@@ -3,7 +3,7 @@ FNMap Setup Instructions (Steam Deck Manual Run)
 ==============================
 
 These steps assume you already have the `bootstrap_fnmap.sh` script downloaded locally
-(from GitHub or USB) and placed in your Steam Deck's home directory (or anywhere convenient).
+(from GitHub or USB) and placed in your Steam Deck's home directory (many times SteamOS requires executables on the desktop).
 
 ──────────────────────────────
 STEP 1 — Make Script Executable
