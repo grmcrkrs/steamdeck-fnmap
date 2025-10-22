@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=FNMap
+Comment=Flutter Network Mapper
+Exec=/home/deck/bin/fnmap-run.sh
+Icon=fnmap
+Terminal=false
+Categories=Internet;Utility;
+
