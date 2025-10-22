@@ -2,7 +2,7 @@
 Type=Application
 Name=FNMap
 Comment=Flutter Network Mapper
-Exec=/home/deck/bin/fnmap-run.sh
+Exec=pkexec /home/deck/bin/fnmap-root.sh
 Icon=fnmap
 Terminal=false
 Categories=Internet;Utility;
